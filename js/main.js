@@ -107,3 +107,15 @@ document.querySelectorAll('.service-card, .feature-item, .testimonial-card').for
 
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
+
+document.addEventListener("DOMContentLoaded", function () {
+  const header = document.querySelector(".header");
+
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 20) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+});

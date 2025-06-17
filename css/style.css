@@ -177,16 +177,20 @@ section {
 }
 
 .logo-title {
+
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--logo-dark);
+  /* color: var(--logo-dark); */
+  color: var(--primary-blue);
   line-height: 1.1;
 }
 
 .logo-tagline {
+  
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--primary-blue);
+  /* color: var(--primary-blue); */
+    color: #6da22b;
   letter-spacing: 0.5px;
   margin-top: 4px;
 }
@@ -229,6 +233,13 @@ section {
 
 .nav-cta {
   margin-left: 30px;
+}
+
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.608); /* semi-transparent white */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* optional deeper shadow */
+  transition: var(--transition);
 }
 
 .hamburger {
