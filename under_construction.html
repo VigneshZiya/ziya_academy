@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Under Construction | Ziya Academy</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Base Styles */
+      :root {
+        --primary-blue: #2563eb;
+        --logo-dark: #1e293b;
+        --text-medium: #475569;
+        --accent-green: #16a34a;
+        --white: #ffffff;
+        --light-bg: #f8fafc;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--light-bg);
+        color: var(--text-medium);
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Main Content */
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Under Construction Styles */
+      .construction-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 40px 20px;
+        margin: 20px auto;
+        width: 100%;
+      }
+
+      .construction-icon {
+        font-size: clamp(3rem, 10vw, 5rem);
+        color: var(--primary-blue);
+        margin-bottom: clamp(20px, 5vw, 30px);
+        animation: bounce 2s infinite;
+      }
+
+      .construction-title {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        margin-bottom: clamp(15px, 3vw, 20px);
+        color: var(--logo-dark);
+        line-height: 1.2;
+      }
+
+      .construction-text {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        color: var(--text-medium);
+        max-width: 600px;
+        margin: 0 auto clamp(25px, 4vw, 30px);
+        padding: 0 15px;
+      }
+
+      .countdown {
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        margin-bottom: clamp(20px, 4vw, 30px);
+        color: var(--accent-green);
+        font-weight: bold;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(10px, 3vw, 12px) clamp(15px, 4vw, 24px);
+        border-radius: 6px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        gap: 8px;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+      }
+
+      .btn-primary {
+        background-color: var(--primary-blue);
+        color: var(--white);
+      }
+
+      .btn-primary:hover {
+        background-color: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Footer Styles */
+      .footer {
+        background-color: var(--white);
+        padding: 20px 0;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        margin-top: auto;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding: 10px 0;
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+      }
+
+      /* Animations */
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-30px);
+        }
+        60% {
+          transform: translateY(-15px);
+        }
+      }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 12px 0;
+        }
+
+        .construction-container {
+          padding: 30px 15px;
+        }
+
+        .logo {
+          gap: 8px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo-text {
+          gap: 2px;
+        }
+
+        .construction-container {
+          padding: 25px 10px;
+        }
+
+        .construction-text {
+          padding: 0 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="header">
+      <nav class="navbar container">
+        <a href="index.html" class="logo">
+          <img src="images/Vector.png" alt="Ziya Academy Logo" />
+          <div class="logo-text">
+            <span class="logo-title">ZiyaAcademy</span>
+            <span class="logo-tagline">KEY-TO SUCCESS</span>
+          </div>
+        </a>
+      </nav>
+    </header>
+
+    <!-- Under Construction Content -->
+    <main>
+      <div class="construction-container">
+        <div class="construction-icon">
+          <i class="fas fa-tools"></i>
+        </div>
+        <h1 class="construction-title">Page Under Construction</h1>
+        <p class="construction-text">
+          We're working hard to bring you an amazing experience. This page will
+          be available soon with exciting new content. Please check back later!
+        </p>
+        <div class="countdown" id="countdown">Estimated launch: 15 days</div>
+        <div class="back-home">
+          <a href="index.html" class="btn btn-primary">
+            <i class="fas fa-home"></i> Back to Home
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>&copy; 2025 Ziya Academy. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Countdown Script -->
+    <script>
+      // Set your launch date (YYYY, MM-1, DD)
+      const launchDate = new Date(2025, 5, 15); // June 15, 2025
+      const countdownEl = document.getElementById("countdown");
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = launchDate - now;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        if (days > 0) {
+          countdownEl.textContent = `Estimated launch: ${days} day${
+            days !== 1 ? "s" : ""
+          }`;
+        } else {
+          countdownEl.textContent = "Launching very soon!";
+        }
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 86400000); // Update daily
+    </script>
+  </body>
+</html>
