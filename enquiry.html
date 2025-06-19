@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ziya Academy – Enquiry Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f8;
+    }
+
+    .hero {
+      background: url('images/hero.png') no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px;
+      width: 100%;
+      font-size: 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .sub-field {
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #222;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>Welcome to Ziya Academy</h1>
+  </section>
+
+  <div class="container">
+    <h2>Enquire Now</h2>
+    <form action="https://formspree.io/f/YOUR-FORM-ID" method="POST">
+      <label>Full Name:</label>
+      <input type="text" name="name" required>
+
+      <label>Email:</label>
+      <input type="email" name="email" required>
+
+      <label>Phone Number:</label>
+      <input type="tel" name="phone" required>
+
+      <label>Interested In:</label>
+      <select name="category" id="category" onchange="toggleSubOptions()" required>
+        <option value="">-- Select --</option>
+        <option value="school">School (LKG to +2)</option>
+        <option value="nios">NIOS</option>
+        <option value="ignou">IGNOU</option>
+        <option value="internship">Internship Program</option>
+        <option value="it_services">IT Services</option>
+      </select>
+
+      <!-- SCHOOL Options -->
+      <div class="sub-field" id="school-options" style="display: none;">
+        <label>Select Class:</label>
+        <select name="school_class">
+          <option value="">-- Select --</option>
+          <option>LKG</option>
+          <option>UKG</option>
+          <option>1st to 10th</option>
+          <option>Plus One</option>
+          <option>Plus Two</option>
+        </select>
+      </div>
+
+      <!-- INTERNSHIP Options -->
+      <div class="sub-field" id="internship-options" style="display: none;">
+        <label>Select Internship Program:</label>
+        <select name="internship">
+          <option value="">-- Select --</option>
+          <option>Python</option>
+          <option>React</option>
+          <option>Flutter</option>
+          <option>UI/UX Design</option>
+          <option>MERN Stack</option>
+          <option>Software Testing</option>
+          <option>Cyber Security</option>
+          <option>Digital Marketing</option>
+        </select>
+      </div>
+
+      <!-- IT SERVICES Options -->
+      <div class="sub-field" id="it-options" style="display: none;">
+        <label>Select IT Service:</label>
+        <select name="it_service">
+          <option value="">-- Select --</option>
+          <option>Mobile App Development</option>
+          <option>Web App Development</option>
+          <option>Dashboard Applications</option>
+        </select>
+      </div>
+
+      <label>Message / Query:</label>
+      <textarea name="message" rows="4" placeholder="Type your question or message here..."></textarea>
+
+      <button type="submit">Submit Enquiry</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Ziya Academy. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleSubOptions() {
+      const category = document.getElementById("category").value;
+      document.getElementById("school-options").style.display = category === "school" ? "block" : "none";
+      document.getElementById("internship-options").style.display = category === "internship" ? "block" : "none";
+      document.getElementById("it-options").style.display = category === "it_services" ? "block" : "none";
+    }
+  </script>
+
+</body>
+</html>
