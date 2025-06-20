@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ziya Academy – Enquiry Form</title>
+  <style>
+    :root {
+      --primary-blue: #2c3e50;
+      --secondary-blue: #3498db;
+      --accent: #e74c3c;
+      --text-dark: #1e293b;
+      --text-medium: #475569;
+      --light-bg: #f8fafc;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #00aeef, #8dc63f);
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(44, 62, 80, 0.7);
+      /* primary-blue with opacity */
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      padding: 20px 30px;
+      border-radius: 8px;
+      position: relative;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.3);
+      border: 2px solid var(--white);
+    }
+
+    .container {
+      max-width: 720px;
+      margin: -50px auto 40px;
+      background: var(--white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--primary-blue);
+      font-size: 2rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: var(--primary-blue);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--secondary-blue);
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 14px;
+      width: 100%;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background-color: var(--primary-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background-color: #1a252f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sub-field {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: var(--light-bg);
+      border-radius: 8px;
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 25px;
+      background-color: var(--primary-blue);
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero {
+        height: 300px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+        padding: 15px 20px;
+      }
+
+      .container {
+        margin: -30px auto 30px;
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        height: 250px;
+      }
+
+      .hero h1 {
+        font-size: 1.5rem;
+        padding: 10px 15px;
+      }
+
+      input,
+      select,
+      textarea,
+      button {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+    <h1>Welcome to Ziya Academy</h1>
+  </section>
+
+  <div class="container">
+    <h2>Enquire Now</h2>
+    <form id="enquiryForm">
+
+      <div id="successMessage"
+        style="display: none; padding: 20px; background-color: #d4edda; color: #155724; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+        <h3>Thank you for your enquiry!</h3>
+        <p>We've received your details and will contact you shortly.</p>
+      </div>
+
+      <label>Full Name:</label>
+      <input type="text" name="name" required>
+
+      <label>Email:</label>
+      <input type="email" name="email" required>
+
+      <label>Phone Number:</label>
+      <input type="tel" name="phone" required>
+
+      <label>Interested In:</label>
+      <select name="category" id="category" onchange="toggleSubOptions()" required>
+        <option value="">-- Select --</option>
+        <option value="school">School (LKG to +2)</option>
+        <option value="nios">NIOS</option>
+        <option value="ignou">IGNOU</option>
+        <option value="internship">Internship Program</option>
+        <option value="it_services">IT Services</option>
+      </select>
+
+      <!-- SCHOOL Options -->
+      <div class="sub-field" id="school-options">
+        <label>Select Class:</label>
+        <select name="school_class">
+          <option value="">-- Select --</option>
+          <option>LKG</option>
+          <option>UKG</option>
+          <option>1st to 10th</option>
+          <option>Plus One</option>
+          <option>Plus Two</option>
+        </select>
+      </div>
+
+      <!-- INTERNSHIP Options -->
+      <div class="sub-field" id="internship-options">
+        <label>Select Internship Program:</label>
+        <select name="internship">
+          <option value="">-- Select --</option>
+          <option>Python</option>
+          <option>React</option>
+          <option>Flutter</option>
+          <option>UI/UX Design</option>
+          <option>MERN Stack</option>
+          <option>Software Testing</option>
+          <option>Cyber Security</option>
+          <option>Digital Marketing</option>
+        </select>
+      </div>
+
+      <!-- IT SERVICES Options -->
+      <div class="sub-field" id="it-options">
+        <label>Select IT Service:</label>
+        <select name="it_service">
+          <option value="">-- Select --</option>
+          <option>Mobile App Development</option>
+          <option>Web App Development</option>
+          <option>Dashboard Applications</option>
+        </select>
+      </div>
+
+      <label>Message / Query:</label>
+      <textarea name="message" rows="4" placeholder="Type your question or message here..."></textarea>
+
+      <button type="submit">
+        <span id="submitText">Submit Enquiry</span>
+        <span id="spinner" style="display: none;">⏳ Sending...</span>
+      </button>
+    </form>
+
+  </div>
+
+  <footer>
+    &copy; 2025 Ziya Academy. All rights reserved.
+  </footer>
+
+  <script>
+  function toggleSubOptions() {
+    const category = document.getElementById("category").value;
+    document.getElementById("school-options").style.display = category === "school" ? "block" : "none";
+    document.getElementById("internship-options").style.display = category === "internship" ? "block" : "none";
+    document.getElementById("it-options").style.display = category === "it_services" ? "block" : "none";
+  }
+
+  // Validate email format
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  // Validate phone number (Indian format)
+  function validatePhone(phone) {
+    const re = /^[6-9]\d{9}$/;
+    return re.test(phone);
+  }
+
+  // Validate form fields
+  function validateForm(formData) {
+    const errors = [];
+    const enquiryData = Object.fromEntries(formData.entries());
+
+    // Name validation
+    if (!enquiryData.name || enquiryData.name.trim().length < 3) {
+      errors.push("Please enter a valid name (at least 3 characters)");
+    }
+
+    // Email validation
+    if (!enquiryData.email || !validateEmail(enquiryData.email)) {
+      errors.push("Please enter a valid email address");
+    }
+
+    // Phone validation
+    if (!enquiryData.phone || !validatePhone(enquiryData.phone)) {
+      errors.push("Please enter a valid 10-digit Indian phone number");
+    }
+
+    // Category validation
+    if (!enquiryData.category) {
+      errors.push("Please select an enquiry category");
+    }
+
+    // Conditional field validation
+    if (enquiryData.category === "school" && !enquiryData.school_class) {
+      errors.push("Please select a class for school enquiry");
+    }
+    if (enquiryData.category === "internship" && !enquiryData.internship) {
+      errors.push("Please select an internship program");
+    }
+    if (enquiryData.category === "it_services" && !enquiryData.it_service) {
+      errors.push("Please select an IT service");
+    }
+
+    return errors;
+  }
+
+  // Display validation errors
+  function showErrors(errors) {
+    // Remove any existing error messages
+    const existingErrors = document.querySelectorAll('.error-message');
+    existingErrors.forEach(error => error.remove());
+
+    // Add new error messages
+    errors.forEach(error => {
+      const errorElement = document.createElement('div');
+      errorElement.className = 'error-message';
+      errorElement.style.color = 'var(--accent)';
+      errorElement.style.marginTop = '5px';
+      errorElement.style.fontSize = '0.9rem';
+      errorElement.textContent = error;
+      
+      // Find the appropriate field to add the error
+      if (error.includes('name')) {
+        document.querySelector('input[name="name"]').after(errorElement);
+      } else if (error.includes('email')) {
+        document.querySelector('input[name="email"]').after(errorElement);
+      } else if (error.includes('phone')) {
+        document.querySelector('input[name="phone"]').after(errorElement);
+      } else if (error.includes('category')) {
+        document.getElementById('category').after(errorElement);
+      } else if (error.includes('class')) {
+        document.querySelector('select[name="school_class"]').after(errorElement);
+      } else if (error.includes('internship')) {
+        document.querySelector('select[name="internship"]').after(errorElement);
+      } else if (error.includes('IT service')) {
+        document.querySelector('select[name="it_service"]').after(errorElement);
+      } else {
+        // For general errors, add before the submit button
+        document.querySelector('button[type="submit"]').before(errorElement);
+      }
+    });
+  }
+
+  document.getElementById('enquiryForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const submitText = document.getElementById('submitText');
+    const spinner = document.getElementById('spinner');
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    // Validate form before submission
+    const formData = new FormData(form);
+    const validationErrors = validateForm(formData);
+
+    if (validationErrors.length > 0) {
+      showErrors(validationErrors);
+      return; // Stop submission if validation fails
+    }
+
+    try {
+      // Show loading state
+      submitButton.disabled = true;
+      submitText.style.display = 'none';
+      spinner.style.display = 'inline';
+
+      const response = await fetch('http://localhost:3001/api/enquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(Object.fromEntries(formData.entries()))
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Network response was not ok');
+      }
+
+      const result = await response.json();
+      
+      if (result.success) {
+        document.getElementById('successMessage').style.display = 'block';
+        form.reset();
+        // Hide form fields after successful submission
+        const formFields = form.querySelectorAll('input, select, textarea, label, .sub-field');
+        formFields.forEach(field => field.style.display = 'none');
+        submitButton.style.display = 'none';
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert(`Error: ${error.message}\n\nBut your email may have been sent successfully. Please check your inbox.`);
+    } finally {
+      // Reset button state
+      submitButton.disabled = false;
+      submitText.style.display = 'inline';
+      spinner.style.display = 'none';
+    }
+  });
+
+  // Add real-time validation on field blur
+  document.querySelectorAll('input, select, textarea').forEach(field => {
+    field.addEventListener('blur', () => {
+      const formData = new FormData(document.getElementById('enquiryForm'));
+      const errors = validateForm(formData);
+      showErrors(errors.filter(err => err.includes(field.name) || err.includes(field.id)));
+    });
+  });
+</script>
+
+</body>
+
+</html>
